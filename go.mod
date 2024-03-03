@@ -2,7 +2,10 @@ module backend/proxima-api
 
 go 1.22.0
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/gin-gonic/gin v1.9.1
+	github.com/jftuga/geodist v1.0.0
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
