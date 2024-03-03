@@ -28,6 +28,22 @@ func getUsers(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, users)
 }
 
+// getUserByID locates the user whose ID value matches the id
+// parameter sent by the client, then returns that user as a response.
+func getUserByID(c *gin.Context) {
+    id := c.Param("id")
+
+    // Loop over the list of users, looking for
+    // an user whose ID value matches the parameter.
+    for _, a := range users {
+        if a.ID == id {
+            c.IndentedJSON(http.StatusOK, a)
+            return
+        }
+    }
+    c.IndentedJSON(http.StatusNotFound, gin.H{"message": "user not found"})
+}
+
 func postUsers(c *gin.Context) {
     var newUser user
 
@@ -45,8 +61,9 @@ func postUsers(c *gin.Context) {
 func main() {
     router := gin.Default()
     router.GET("/users", getUsers)
+    router.GET("/users/:id", getUserByID)
     router.POST("/users", postUsers)
 
-    router.Run("localhost:8080")
+    router.Run(":8080")
 }
 
