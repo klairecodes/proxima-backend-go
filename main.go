@@ -72,8 +72,6 @@ type point struct {
     LonB string `json:"lonb"`
 }
 
-
-// This is disgusting
 func putPoints(c *gin.Context) {
     var newPoint point
 
@@ -86,8 +84,17 @@ func putPoints(c *gin.Context) {
     
 }
 
-var points = []point{}
+var points = []point{
+    {ID: "1", LatA: "40.7128", LonA: "74.0060", LatB: "32.7157", LonB: "117.1611"},
+    {ID: "2", LatA: "41.7128", LonA: "75.0060", LatB: "33.7157", LonB: "118.1611"},
+}
 
+
+func getPoints(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, points)
+}
+
+// This is disgusting
 func getDistance(c *gin.Context) {
     //fmt.Printf("%.3f", c.Param("lata"))
     fmt.Printf("HEREEEEEEEEEEEEE %s\n", c.Param("LatA"))
@@ -111,8 +118,10 @@ func main() {
     router.GET("/users", getUsers)
     router.GET("/users/:id", getUserByID)
     router.POST("/users", postUsers)
-    router.PUT("/distance", putPoints)
+
     router.GET("/distance", getDistance)
+    router.GET("/points", getPoints)
+    router.PUT("/distance", putPoints)
 
     router.Run(":8080")
 }

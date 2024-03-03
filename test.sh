@@ -12,14 +12,26 @@
     #--request "POST" \
     #--data '{"id": "4", "name": "Klaire", "email": "no@csh.rit.edu", "username": "osmiu", "pronouns": "she/they", "secret": "no", "visibility": "USER_INVISIBLE"}'
 
-#curl http://localhost:8080/distance \
-    #--include \
-    #--header "Content-Type: application/json" \
-    #--request "POST" \
-    #--data '{"Lata": 40.7128, "Lona": 74.0060, "Latb": 32.7157, "Lonb": 117.1611}'
-
 curl http://localhost:8080/distance \
     --include \
     --header "Content-Type: application/json" \
     --request "POST" \
-    --data '{"Lata": "40.7128", "Lona": "74.0060", "Latb": "32.7157", "Lonb": "117.1611"}'
+    --data '{"Lata": 40.7128, "Lona": 74.0060, "Latb": 32.7157, "Lonb": 117.1611}'
+
+curl http://localhost:8080/distance \
+    --include \
+    --header "Content-Type: application/json" \
+    --request "PUT" \
+    --data '{"ID": "7", "Lata": "40.7128", "Lona": "74.0060", "Latb": "32.7157", "Lonb": "117.1611"}'
+
+curl http://localhost:8080/distance \
+    --include \
+    --header "Content-Type: application/json" \
+    --request "GET" \
+    --data '{"ID": "7", "Lata": "40.7128", "Lona": "74.0060", "Latb": "32.7157", "Lonb": "117.1611"}'
+
+curl http://localhost:8080/distance \
+    --include \
+    --header "Content-Type: application/json" \
+    --request "GET" \
+    --data '{"ID": "7", "Lata": "40.7128", "Lona": "74.0060", "Latb": "32.7157", "Lonb": "117.1611"}'
