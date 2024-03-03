@@ -7,7 +7,6 @@ RUN go mod download
 
 COPY *.go ./
 
-#RUN CGO_ENABLED=0 GOOS=linux go build -o /proxima-api
+RUN CGO_ENABLED=0 GOOS=linux go build -o /proxima-api
 
-#CMD go run /proxima-api
-CMD go run .
+CMD ["/proxima-api"]
